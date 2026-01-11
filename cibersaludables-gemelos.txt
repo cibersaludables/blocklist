@@ -29,8 +29,8 @@
 ! SECCIÓN 1 — URLs directas / Perfiles
 ! ------------------------------------------------------------
 
-||youtube.com/@ZonaGemelosYT/videos
-||youtube.com/@zonagemelosxtra/videos
+||youtube.com/@ZonaGemelosYT/videos$document
+||youtube.com/@zonagemelosxtra/videos$document
 ||kick.com
 ||instagram.com/carloszonagemelos
 ||instagram.com/danielzonagemelos
@@ -46,83 +46,85 @@ youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"]
 ! SECCIÓN 3 — Bloqueo de búsquedas en YouTube (por palabras clave)
 ! ------------------------------------------------------------
 
-||youtube.com/results?search_query=casa+de+los+gemelos*
-||youtube.com/results?search_query=gala+gemelos*
-||youtube.com/results?search_query=casa+gemelos*
-||youtube.com/results?search_query=reality+gemelos*
-||youtube.com/results?search_query=la+gala+de+los+gemelos*
+||youtube.com/results?search_query=casa+de+los+gemelos*$document
+||youtube.com/results?search_query=gala+gemelos*$document
+||youtube.com/results?search_query=casa+gemelos*$document
+||youtube.com/results?search_query=reality+gemelos*$document
+||youtube.com/results?search_query=la+gala+de+los+gemelos*$document
 
 ! ------------------------------------------------------------
 ! SECCIÓN 4 — Bloqueo de vídeos individuales (Canal principal)
+! (Forzado como bloqueo de documento para SPA de YouTube)
 ! ------------------------------------------------------------
 
-||youtube.com/watch?v=qSK-NQH1cOM
-||youtube.com/watch?v=Am-_eEyR5Dw
-||youtube.com/watch?v=t2wBKKKLWe4
-||youtube.com/watch?v=JAXbHshOWek
-||youtube.com/watch?v=di304CkG0yg
-||youtube.com/watch?v=1MasZVw-Ryc
-||youtube.com/watch?v=-fM9JJWnClc
-||youtube.com/watch?v=CaXkbnStqM0
-||youtube.com/watch?v=muAc5mapamU
-||youtube.com/watch?v=x8ZUvTMMWZI
-||youtube.com/watch?v=p-fW_r3yDLY
-||youtube.com/watch?v=f6o9ajUI-9c
-||youtube.com/watch?v=sMkBl0GhFaE
-||youtube.com/watch?v=tHjimrS_Nh0
-||youtube.com/watch?v=ETVXBPQzSKA
-||youtube.com/watch?v=g09EfRu8oVc
-||youtube.com/watch?v=WldYHB7R8FQ
-||youtube.com/watch?v=wCS31qCE3X8
-||youtube.com/watch?v=iLOTl9gDbwE
-||youtube.com/watch?v=Gt8GzL_M-ok
-||youtube.com/watch?v=EzX_8rEaS2o
-||youtube.com/watch?v=oL_v5xSAmfo
-||youtube.com/watch?v=8yPUMtDi1VA
-||youtube.com/watch?v=sYlvr2VOg4E
+||youtube.com/watch?v=qSK-NQH1cOM$document
+||youtube.com/watch?v=Am-_eEyR5Dw$document
+||youtube.com/watch?v=t2wBKKKLWe4$document
+||youtube.com/watch?v=JAXbHshOWek$document
+||youtube.com/watch?v=di304CkG0yg$document
+||youtube.com/watch?v=1MasZVw-Ryc$document
+||youtube.com/watch?v=-fM9JJWnClc$document
+||youtube.com/watch?v=CaXkbnStqM0$document
+||youtube.com/watch?v=muAc5mapamU$document
+||youtube.com/watch?v=x8ZUvTMMWZI$document
+||youtube.com/watch?v=p-fW_r3yDLY$document
+||youtube.com/watch?v=f6o9ajUI-9c$document
+||youtube.com/watch?v=sMkBl0GhFaE$document
+||youtube.com/watch?v=tHjimrS_Nh0$document
+||youtube.com/watch?v=ETVXBPQzSKA$document
+||youtube.com/watch?v=g09EfRu8oVc$document
+||youtube.com/watch?v=WldYHB7R8FQ$document
+||youtube.com/watch?v=wCS31qCE3X8$document
+||youtube.com/watch?v=iLOTl9gDbwE$document
+||youtube.com/watch?v=Gt8GzL_M-ok$document
+||youtube.com/watch?v=EzX_8rEaS2o$document
+||youtube.com/watch?v=oL_v5xSAmfo$document
+||youtube.com/watch?v=8yPUMtDi1VA$document
+||youtube.com/watch?v=sYlvr2VOg4E$document
 
 ! ------------------------------------------------------------
 ! SECCIÓN 5 — Bloqueo de vídeos individuales (Canal secundario)
+! (Forzado como bloqueo de documento para SPA de YouTube)
 ! ------------------------------------------------------------
 
-||youtube.com/watch?v=J2NN9_7Atgo
-||youtube.com/watch?v=N8lmRldRGF8
-||youtube.com/watch?v=_QO6kMCtC8o
-||youtube.com/watch?v=Re16fKKJrxs
-||youtube.com/watch?v=YABpKEAGMzQ
-||youtube.com/watch?v=B7ReFC3pKOc
-||youtube.com/watch?v=vXeUKd_9PjY
-||youtube.com/watch?v=GXxg77vLbUM
-||youtube.com/watch?v=IUWHiKjDHJ4
-||youtube.com/watch?v=pbr8lZmy2zw
-||youtube.com/watch?v=gvYglkr21Zg
-||youtube.com/watch?v=C9J8BZj5JQM
-||youtube.com/watch?v=FJgTKjSPWZw
-||youtube.com/watch?v=GoO43lQbaoI
-||youtube.com/watch?v=Wtt46EyZR24
-||youtube.com/watch?v=AlvNGYU-G3U
-||youtube.com/watch?v=qaN2tn7wHwA
-||youtube.com/watch?v=V4z__VXG5JY
-||youtube.com/watch?v=Ocw9WEIFxKQ
-||youtube.com/watch?v=EnlFRnvQ8LI
-||youtube.com/watch?v=JMtC7vklrBQ
-||youtube.com/watch?v=ivf2f66NFpA
-||youtube.com/watch?v=i-Hi_H7Vi9g
-||youtube.com/watch?v=mAvqUluXGU0
-||youtube.com/watch?v=5wV9XVk-P18
-||youtube.com/watch?v=NBKtuR9aeaw
-||youtube.com/watch?v=Fe0RtJHk4-U
-||youtube.com/watch?v=jpAz9s7Dzrc
-||youtube.com/watch?v=T4cYEk97Z_k
-||youtube.com/watch?v=E-seVmotQwI
-||youtube.com/watch?v=ovmC2GrDAPo
-||youtube.com/watch?v=RCmwJelSVFg
-||youtube.com/watch?v=wz4ug3MUHUk
-||youtube.com/watch?v=hOHpCmbu0U4
-||youtube.com/watch?v=YntiPiOvQYs
-||youtube.com/watch?v=hIoofh8lPhw
-||youtube.com/watch?v=iJyHs2VMfNc
-||youtube.com/watch?v=JVfledkD0rA
+||youtube.com/watch?v=J2NN9_7Atgo$document
+||youtube.com/watch?v=N8lmRldRGF8$document
+||youtube.com/watch?v=_QO6kMCtC8o$document
+||youtube.com/watch?v=Re16fKKJrxs$document
+||youtube.com/watch?v=YABpKEAGMzQ$document
+||youtube.com/watch?v=B7ReFC3pKOc$document
+||youtube.com/watch?v=vXeUKd_9PjY$document
+||youtube.com/watch?v=GXxg77vLbUM$document
+||youtube.com/watch?v=IUWHiKjDHJ4$document
+||youtube.com/watch?v=pbr8lZmy2zw$document
+||youtube.com/watch?v=gvYglkr21Zg$document
+||youtube.com/watch?v=C9J8BZj5JQM$document
+||youtube.com/watch?v=FJgTKjSPWZw$document
+||youtube.com/watch?v=GoO43lQbaoI$document
+||youtube.com/watch?v=Wtt46EyZR24$document
+||youtube.com/watch?v=AlvNGYU-G3U$document
+||youtube.com/watch?v=qaN2tn7wHwA$document
+||youtube.com/watch?v=V4z__VXG5JY$document
+||youtube.com/watch?v=Ocw9WEIFxKQ$document
+||youtube.com/watch?v=EnlFRnvQ8LI$document
+||youtube.com/watch?v=JMtC7vklrBQ$document
+||youtube.com/watch?v=ivf2f66NFpA$document
+||youtube.com/watch?v=i-Hi_H7Vi9g$document
+||youtube.com/watch?v=mAvqUluXGU0$document
+||youtube.com/watch?v=5wV9XVk-P18$document
+||youtube.com/watch?v=NBKtuR9aeaw$document
+||youtube.com/watch?v=Fe0RtJHk4-U$document
+||youtube.com/watch?v=jpAz9s7Dzrc$document
+||youtube.com/watch?v=T4cYEk97Z_k$document
+||youtube.com/watch?v=E-seVmotQwI$document
+||youtube.com/watch?v=ovmC2GrDAPo$document
+||youtube.com/watch?v=RCmwJelSVFg$document
+||youtube.com/watch?v=wz4ug3MUHUk$document
+||youtube.com/watch?v=hOHpCmbu0U4$document
+||youtube.com/watch?v=YntiPiOvQYs$document
+||youtube.com/watch?v=hIoofh8lPhw$document
+||youtube.com/watch?v=iJyHs2VMfNc$document
+||youtube.com/watch?v=JVfledkD0rA$document
 
 ! ------------------------------------------------------------
 ! FIN DE LA LISTA
