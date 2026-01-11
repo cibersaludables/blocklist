@@ -1,0 +1,129 @@
+[Adblock Plus 2.0]
+! Título: cibersaludables-gemelos
+! Descripción: Blocklist para uBlock Origin destinada a bloquear canales de YouTube,
+!              vídeos individuales, búsquedas por palabras clave y perfiles sociales relacionados.
+! Ámbito: Solo a nivel de navegador (uBlock Origin)
+! Compatibilidad: Firefox (uBlock Origin COMPLETO). Compatibilidad limitada o no soportada en Chrome MV3.
+! NO compatible con DNS / Firewalla / iOS / Android / Smart TV
+!
+! Mantenedor: cibersaludables
+! Licencia: MIT
+! Versión: 1.0.0
+! Última actualización: 2026-01-11
+!
+! ------------------------------------------------------------
+! INFORMACIÓN IMPORTANTE PARA LOS USUARIOS
+! ------------------------------------------------------------
+! - Esta lista está pensada ÚNICAMENTE para uBlock Origin.
+! - Funciona a nivel de navegador (filtrado por URL y por DOM).
+! - NO funcionará en:
+!     * Firewalls (filtrado DNS)
+!     * Aplicación de YouTube en iOS / Android
+!     * Smart TVs
+!
+! Configuración recomendada:
+! - Firefox + uBlock Origin
+! - Activar "Mis filtros" y/o añadir esta lista como "Custom filter list"
+!
+! ------------------------------------------------------------
+! SECCIÓN 1 — URLs directas / Perfiles
+! ------------------------------------------------------------
+
+||youtube.com/@ZonaGemelosYT/videos
+||youtube.com/@zonagemelosxtra/videos
+||kick.com
+||instagram.com/carloszonagemelos
+||instagram.com/danielzonagemelos
+
+! ------------------------------------------------------------
+! SECCIÓN 2 — Bloqueo de canales de YouTube (DOM-based)
+! ------------------------------------------------------------
+
+youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
+youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
+
+! ------------------------------------------------------------
+! SECCIÓN 3 — Bloqueo de búsquedas en YouTube (por palabras clave)
+! ------------------------------------------------------------
+
+||youtube.com/results?search_query=casa+de+los+gemelos*
+||youtube.com/results?search_query=gala+gemelos*
+||youtube.com/results?search_query=casa+gemelos*
+||youtube.com/results?search_query=reality+gemelos*
+||youtube.com/results?search_query=la+gala+de+los+gemelos*
+
+! ------------------------------------------------------------
+! SECCIÓN 4 — Bloqueo de vídeos individuales (Canal principal)
+! ------------------------------------------------------------
+
+||youtube.com/watch?v=qSK-NQH1cOM
+||youtube.com/watch?v=Am-_eEyR5Dw
+||youtube.com/watch?v=t2wBKKKLWe4
+||youtube.com/watch?v=JAXbHshOWek
+||youtube.com/watch?v=di304CkG0yg
+||youtube.com/watch?v=1MasZVw-Ryc
+||youtube.com/watch?v=-fM9JJWnClc
+||youtube.com/watch?v=CaXkbnStqM0
+||youtube.com/watch?v=muAc5mapamU
+||youtube.com/watch?v=x8ZUvTMMWZI
+||youtube.com/watch?v=p-fW_r3yDLY
+||youtube.com/watch?v=f6o9ajUI-9c
+||youtube.com/watch?v=sMkBl0GhFaE
+||youtube.com/watch?v=tHjimrS_Nh0
+||youtube.com/watch?v=ETVXBPQzSKA
+||youtube.com/watch?v=g09EfRu8oVc
+||youtube.com/watch?v=WldYHB7R8FQ
+||youtube.com/watch?v=wCS31qCE3X8
+||youtube.com/watch?v=iLOTl9gDbwE
+||youtube.com/watch?v=Gt8GzL_M-ok
+||youtube.com/watch?v=EzX_8rEaS2o
+||youtube.com/watch?v=oL_v5xSAmfo
+||youtube.com/watch?v=8yPUMtDi1VA
+||youtube.com/watch?v=sYlvr2VOg4E
+
+! ------------------------------------------------------------
+! SECCIÓN 5 — Bloqueo de vídeos individuales (Canal secundario)
+! ------------------------------------------------------------
+
+||youtube.com/watch?v=J2NN9_7Atgo
+||youtube.com/watch?v=N8lmRldRGF8
+||youtube.com/watch?v=_QO6kMCtC8o
+||youtube.com/watch?v=Re16fKKJrxs
+||youtube.com/watch?v=YABpKEAGMzQ
+||youtube.com/watch?v=B7ReFC3pKOc
+||youtube.com/watch?v=vXeUKd_9PjY
+||youtube.com/watch?v=GXxg77vLbUM
+||youtube.com/watch?v=IUWHiKjDHJ4
+||youtube.com/watch?v=pbr8lZmy2zw
+||youtube.com/watch?v=gvYglkr21Zg
+||youtube.com/watch?v=C9J8BZj5JQM
+||youtube.com/watch?v=FJgTKjSPWZw
+||youtube.com/watch?v=GoO43lQbaoI
+||youtube.com/watch?v=Wtt46EyZR24
+||youtube.com/watch?v=AlvNGYU-G3U
+||youtube.com/watch?v=qaN2tn7wHwA
+||youtube.com/watch?v=V4z__VXG5JY
+||youtube.com/watch?v=Ocw9WEIFxKQ
+||youtube.com/watch?v=EnlFRnvQ8LI
+||youtube.com/watch?v=JMtC7vklrBQ
+||youtube.com/watch?v=ivf2f66NFpA
+||youtube.com/watch?v=i-Hi_H7Vi9g
+||youtube.com/watch?v=mAvqUluXGU0
+||youtube.com/watch?v=5wV9XVk-P18
+||youtube.com/watch?v=NBKtuR9aeaw
+||youtube.com/watch?v=Fe0RtJHk4-U
+||youtube.com/watch?v=jpAz9s7Dzrc
+||youtube.com/watch?v=T4cYEk97Z_k
+||youtube.com/watch?v=E-seVmotQwI
+||youtube.com/watch?v=ovmC2GrDAPo
+||youtube.com/watch?v=RCmwJelSVFg
+||youtube.com/watch?v=wz4ug3MUHUk
+||youtube.com/watch?v=hOHpCmbu0U4
+||youtube.com/watch?v=YntiPiOvQYs
+||youtube.com/watch?v=hIoofh8lPhw
+||youtube.com/watch?v=iJyHs2VMfNc
+||youtube.com/watch?v=JVfledkD0rA
+
+! ------------------------------------------------------------
+! FIN DE LA LISTA
+! ------------------------------------------------------------
