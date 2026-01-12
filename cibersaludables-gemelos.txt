@@ -8,32 +8,34 @@
 !
 ! Mantenedor: cibersaludables
 ! Licencia: MIT
-! Versión: 1.0.0
-! Última actualización: 2026-01-11
+! Versión: 1.1.0
+! Última actualización: 2026-01-12
 !
 ! ------------------------------------------------------------
 ! INFORMACIÓN IMPORTANTE PARA LOS USUARIOS
 ! ------------------------------------------------------------
 ! - Esta lista está pensada ÚNICAMENTE para uBlock Origin.
-! - Funciona a nivel de navegador (filtrado por URL y por DOM).
-! - NO funcionará en:
-!     * Firewalls (filtrado DNS)
-!     * Aplicación de YouTube en iOS / Android
-!     * Smart TVs
-!
-! Configuración recomendada:
-! - Firefox + uBlock Origin
-! - Activar "Mis filtros" y/o añadir esta lista como "Custom filter list"
+! - NO utiliza strict-block ($document) para evitar el botón "Continuar".
+! - El bloqueo se realiza mediante overlay visual (player-kill).
 !
 ! ------------------------------------------------------------
-! SECCIÓN 1 — URLs directas / Perfiles
+! SECCIÓN 1 — Canales (overlay-kill por ruta)
 ! ------------------------------------------------------------
 
-||youtube.com/@ZonaGemelosYT/videos$document
-||youtube.com/@zonagemelosxtra/videos$document
-||kick.com
-||instagram.com/carloszonagemelos
-||instagram.com/danielzonagemelos
+youtube.com##:matches-path(/^\/@ZonaGemelosYT/) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/^\/@ZonaGemelosYT/) ytd-app:style(
+  position:fixed!important;
+  inset:0!important;
+  z-index:2147483647!important;
+  background-color:#ffffff!important;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'>Contenido bloqueado</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
+)
+
+youtube.com##:matches-path(/^\/@zonagemelosxtra/) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/^\/@zonagemelosxtra/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'>Contenido bloqueado</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 2 — Bloqueo de canales de YouTube (DOM-based)
@@ -43,88 +45,27 @@ youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"]
 youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
 
 ! ------------------------------------------------------------
-! SECCIÓN 3 — Bloqueo de búsquedas en YouTube (por palabras clave)
+! SECCIÓN 3 — Bloqueo de búsquedas en YouTube (overlay-kill)
 ! ------------------------------------------------------------
 
-||youtube.com/results?search_query=casa+de+los+gemelos*$document
-||youtube.com/results?search_query=gala+gemelos*$document
-||youtube.com/results?search_query=casa+gemelos*$document
-||youtube.com/results?search_query=reality+gemelos*$document
-||youtube.com/results?search_query=la+gala+de+los+gemelos*$document
+youtube.com##:matches-path(/results\?search_query=casa\+de\+los\+gemelos/) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/results\?search_query=gala\+gemelos/) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/results\?search_query=casa\+gemelos/) ytd-app > *:style(display:none!important;)
+
+youtube.com##:matches-path(/results\?search_query=(casa\+de\+los\+gemelos|gala\+gemelos|casa\+gemelos)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='42' text-anchor='middle' fill='%23111111'>Búsqueda bloqueada</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
 
 ! ------------------------------------------------------------
-! SECCIÓN 4 — Bloqueo de vídeos individuales (Canal principal)
-! (Forzado como bloqueo de documento para SPA de YouTube)
+! SECCIÓN 4 — Vídeos individuales (overlay-kill)
 ! ------------------------------------------------------------
 
-||youtube.com/watch?v=qSK-NQH1cOM$document
-||youtube.com/watch?v=Am-_eEyR5Dw$document
-||youtube.com/watch?v=t2wBKKKLWe4$document
-||youtube.com/watch?v=JAXbHshOWek$document
-||youtube.com/watch?v=di304CkG0yg$document
-||youtube.com/watch?v=1MasZVw-Ryc$document
-||youtube.com/watch?v=-fM9JJWnClc$document
-||youtube.com/watch?v=CaXkbnStqM0$document
-||youtube.com/watch?v=muAc5mapamU$document
-||youtube.com/watch?v=x8ZUvTMMWZI$document
-||youtube.com/watch?v=p-fW_r3yDLY$document
-||youtube.com/watch?v=f6o9ajUI-9c$document
-||youtube.com/watch?v=sMkBl0GhFaE$document
-||youtube.com/watch?v=tHjimrS_Nh0$document
-||youtube.com/watch?v=ETVXBPQzSKA$document
-||youtube.com/watch?v=g09EfRu8oVc$document
-||youtube.com/watch?v=WldYHB7R8FQ$document
-||youtube.com/watch?v=wCS31qCE3X8$document
-||youtube.com/watch?v=iLOTl9gDbwE$document
-||youtube.com/watch?v=Gt8GzL_M-ok$document
-||youtube.com/watch?v=EzX_8rEaS2o$document
-||youtube.com/watch?v=oL_v5xSAmfo$document
-||youtube.com/watch?v=8yPUMtDi1VA$document
-||youtube.com/watch?v=sYlvr2VOg4E$document
+youtube.com##:matches-path(/watch\?v=qSK-NQH1cOM) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/watch\?v=qSK-NQH1cOM) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'>Vídeo bloqueado</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
 
-! ------------------------------------------------------------
-! SECCIÓN 5 — Bloqueo de vídeos individuales (Canal secundario)
-! (Forzado como bloqueo de documento para SPA de YouTube)
-! ------------------------------------------------------------
+youtube.com##:matches-path(/watch\?v=Am-_eEyR5Dw) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/watch\?v=Am-_eEyR5Dw) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'>Vídeo bloqueado</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
 
-||youtube.com/watch?v=J2NN9_7Atgo$document
-||youtube.com/watch?v=N8lmRldRGF8$document
-||youtube.com/watch?v=_QO6kMCtC8o$document
-||youtube.com/watch?v=Re16fKKJrxs$document
-||youtube.com/watch?v=YABpKEAGMzQ$document
-||youtube.com/watch?v=B7ReFC3pKOc$document
-||youtube.com/watch?v=vXeUKd_9PjY$document
-||youtube.com/watch?v=GXxg77vLbUM$document
-||youtube.com/watch?v=IUWHiKjDHJ4$document
-||youtube.com/watch?v=pbr8lZmy2zw$document
-||youtube.com/watch?v=gvYglkr21Zg$document
-||youtube.com/watch?v=C9J8BZj5JQM$document
-||youtube.com/watch?v=FJgTKjSPWZw$document
-||youtube.com/watch?v=GoO43lQbaoI$document
-||youtube.com/watch?v=Wtt46EyZR24$document
-||youtube.com/watch?v=AlvNGYU-G3U$document
-||youtube.com/watch?v=qaN2tn7wHwA$document
-||youtube.com/watch?v=V4z__VXG5JY$document
-||youtube.com/watch?v=Ocw9WEIFxKQ$document
-||youtube.com/watch?v=EnlFRnvQ8LI$document
-||youtube.com/watch?v=JMtC7vklrBQ$document
-||youtube.com/watch?v=ivf2f66NFpA$document
-||youtube.com/watch?v=i-Hi_H7Vi9g$document
-||youtube.com/watch?v=mAvqUluXGU0$document
-||youtube.com/watch?v=5wV9XVk-P18$document
-||youtube.com/watch?v=NBKtuR9aeaw$document
-||youtube.com/watch?v=Fe0RtJHk4-U$document
-||youtube.com/watch?v=jpAz9s7Dzrc$document
-||youtube.com/watch?v=T4cYEk97Z_k$document
-||youtube.com/watch?v=E-seVmotQwI$document
-||youtube.com/watch?v=ovmC2GrDAPo$document
-||youtube.com/watch?v=RCmwJelSVFg$document
-||youtube.com/watch?v=wz4ug3MUHUk$document
-||youtube.com/watch?v=hOHpCmbu0U4$document
-||youtube.com/watch?v=YntiPiOvQYs$document
-||youtube.com/watch?v=hIoofh8lPhw$document
-||youtube.com/watch?v=iJyHs2VMfNc$document
-||youtube.com/watch?v=JVfledkD0rA$document
+youtube.com##:matches-path(/watch\?v=t2wBKKKLWe4) ytd-app > *:style(display:none!important;)
+youtube.com##:matches-path(/watch\?v=t2wBKKKLWe4) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%25' height='100%25' fill='white'/><text x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'>Vídeo bloqueado</text><text x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'>por Cibersaludables</text></svg>")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
 
 ! ------------------------------------------------------------
 ! FIN DE LA LISTA
