@@ -3,101 +3,56 @@
 ! Descripción: Blocklist uBlock Origin con overlay-kill (sin $document y sin :matches-path)
 ! Mantenedor: cibersaludables
 ! Licencia: MIT
-! Versión: 1.1.5
+! Versión: 1.1.6
 ! Última actualización: 2026-01-13
 !
 ! Nota:
 ! - Se evita :matches-path() por errores "Invalid filter" en algunas instalaciones.
-! - Se utiliza link[rel="canonical"] como trigger estable en YouTube (SPA-safe).
+! - Se usa link[rel="canonical"] como trigger estable en YouTube.
 ! ------------------------------------------------------------
-
-! ============================================================
-! OVERLAY BASE
-! - Oculta todo el contenido de ytd-app y deja una pantalla en blanco.
-! ============================================================
 
 ! ------------------------------------------------------------
 ! SECCIÓN 1 — Canales (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 2 — Bloqueo de vídeos en listados (DOM-based)
 ! ------------------------------------------------------------
 
-youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
-youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
+youtube.com#ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
+youtube.com#ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
 
 ! ------------------------------------------------------------
 ! SECCIÓN 3 — Búsquedas (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 4 — Vídeos individuales (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) > *:style(display:none!important;)
-youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]):style(
-  position:fixed!important;
-  inset:0!important;
-  z-index:2147483647!important;
-  background:#ffffff!important;
-)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) > *:style(display:none!important;)
+youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! FIN
