@@ -32,6 +32,9 @@ youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"]
 ! SECCIÓN 3 — Búsquedas (overlay-kill por canonical)
 ! ============================================================
 
+youtube.com##html:has(title:has-text(/gala\s+gemelos/i)) body > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/gala\s+gemelos/i)) body:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) body > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) body:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
