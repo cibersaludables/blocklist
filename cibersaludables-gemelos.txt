@@ -8,51 +8,51 @@
 !
 ! Nota:
 ! - Se evita :matches-path() por errores "Invalid filter" en algunas instalaciones.
-! - Se usa link[rel="canonical"] como trigger estable en YouTube.
+! - Se usa link[rel="canonical"] para identificar rutas de forma estable.
 ! ------------------------------------------------------------
 
 ! ------------------------------------------------------------
 ! SECCIÓN 1 — Canales (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/@zonagemelosxtra"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 2 — Bloqueo de vídeos en listados (DOM-based)
 ! ------------------------------------------------------------
 
-youtube.com#ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
-youtube.com#ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
+www.youtube.com,youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
+www.youtube.com,youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
 
 ! ------------------------------------------------------------
 ! SECCIÓN 3 — Búsquedas (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 4 — Vídeos individuales (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) > *:style(display:none!important;)
-youtube.com#ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) > *:style(display:none!important;)
+www.youtube.com,youtube.com##ytd-app:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! FIN
