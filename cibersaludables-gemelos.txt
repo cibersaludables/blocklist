@@ -6,13 +6,12 @@
 ! Versión: 1.2.0
 ! Última actualización: 2026-01-13
 !
-! Nota: Se evita strict-block ($document) para eliminar el botón "Continuar".
-! Nota: Se evita :matches-path() por compatibilidad.
+! Nota: Se elimina strict-block ($document) para evitar el botón "Continuar".
+! Nota: Se evita :matches-path() por compatibilidad (evita "Invalid filter").
 ! ------------------------------------------------------------
 
 ! ------------------------------------------------------------
-! SECCIÓN 0 — Dominios/perfiles (network filters)
-! (Sin $document, para evitar "Continuar" en strict-block.)
+! SECCIÓN 1 — URLs directas / Perfiles (network filters)
 ! ------------------------------------------------------------
 
 ||kick.com
@@ -20,7 +19,8 @@
 ||instagram.com/danielzonagemelos
 
 ! ------------------------------------------------------------
-! SECCIÓN 1 — Canales (overlay-kill)
+! SECCIÓN 2 — Canales YouTube (overlay-kill por canonical del handle)
+! (Se bloquea el canal completo sin depender de /videos)
 ! ------------------------------------------------------------
 
 youtube.com##html:has(link[rel="canonical"][href*="/@ZonaGemelosYT"]) ytd-app > *:style(display:none!important;)
@@ -30,57 +30,240 @@ youtube.com##html:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) ytd-app 
 youtube.com##html:has(link[rel="canonical"][href*="/@zonagemelosxtra"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
-! SECCIÓN 2 — Bloqueo de vídeos en listados (DOM-based)
+! SECCIÓN 3 — Bloqueo de vídeos en listados (DOM-based)
+! (Oculta vídeos de esos canales en listados/recomendados)
 ! ------------------------------------------------------------
 
 youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"])
 youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
 
 ! ------------------------------------------------------------
-! SECCIÓN 3 — Búsquedas en YouTube (overlay-kill)
-! (Incluye variantes con + y con %20)
+! SECCIÓN 4 — Búsquedas YouTube (overlay-kill)
+! Trigger principal: <title> (más fiable en SERP).
+! Fallback: canonical con search_query.
 ! ------------------------------------------------------------
 
+! casa de los gemelos
+youtube.com##html:has(title:has-text(/casa\s+de\s+los\s+gemelos/i)) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/casa\s+de\s+los\s+gemelos/i)) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+de+los+gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa%20de%20los%20gemelos"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa%20de%20los%20gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
+! gala gemelos
+youtube.com##html:has(title:has-text(/gala\s+gemelos/i)) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/gala\s+gemelos/i)) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=gala+gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=gala%20gemelos"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=gala%20gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
+! casa gemelos
+youtube.com##html:has(title:has-text(/casa\s+gemelos/i)) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/casa\s+gemelos/i)) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa+gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa%20gemelos"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=casa%20gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+! reality gemelos
+youtube.com##html:has(title:has-text(/reality\s+gemelos/i)) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/reality\s+gemelos/i)) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=reality+gemelos"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=reality+gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+! la gala de los gemelos
+youtube.com##html:has(title:has-text(/la\s+gala\s+de\s+los\s+gemelos/i)) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(title:has-text(/la\s+gala\s+de\s+los\s+gemelos/i)) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=la+gala+de+los+gemelos"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="/results?search_query=la+gala+de+los+gemelos"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
-! SECCIÓN 4 — Vídeos individuales (overlay-kill)
-! (Cubre watch, embed y og:video:url para robustez)
+! SECCIÓN 5 — Vídeos individuales (overlay-kill por canonical watch?v=VIDEOID)
 ! ------------------------------------------------------------
 
+! Canal principal
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=qSK-NQH1cOM"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/qSK-NQH1cOM"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/qSK-NQH1cOM"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="qSK-NQH1cOM"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="qSK-NQH1cOM"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=Am-_eEyR5Dw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/Am-_eEyR5Dw"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/Am-_eEyR5Dw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="Am-_eEyR5Dw"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="Am-_eEyR5Dw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) ytd-app > *:style(display:none!important;)
 youtube.com##html:has(link[rel="canonical"][href*="watch?v=t2wBKKKLWe4"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/t2wBKKKLWe4"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(link[rel="canonical"][href*="/embed/t2wBKKKLWe4"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="t2wBKKKLWe4"]) ytd-app > *:style(display:none!important;)
-youtube.com##html:has(meta[property="og:video:url"][content*="t2wBKKKLWe4"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JAXbHshOWek"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JAXbHshOWek"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=di304CkG0yg"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=di304CkG0yg"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=1MasZVw-Ryc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=1MasZVw-Ryc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=-fM9JJWnClc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=-fM9JJWnClc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=CaXkbnStqM0"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=CaXkbnStqM0"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=muAc5mapamU"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=muAc5mapamU"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=x8ZUvTMMWZI"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=x8ZUvTMMWZI"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=p-fW_r3yDLY"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=p-fW_r3yDLY"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=f6o9ajUI-9c"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=f6o9ajUI-9c"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=sMkBl0GhFaE"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=sMkBl0GhFaE"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=tHjimrS_Nh0"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=tHjimrS_Nh0"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ETVXBPQzSKA"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ETVXBPQzSKA"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=g09EfRu8oVc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=g09EfRu8oVc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=WldYHB7R8FQ"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=WldYHB7R8FQ"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=wCS31qCE3X8"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=wCS31qCE3X8"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=iLOTl9gDbwE"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=iLOTl9gDbwE"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Gt8GzL_M-ok"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Gt8GzL_M-ok"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=EzX_8rEaS2o"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=EzX_8rEaS2o"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=oL_v5xSAmfo"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=oL_v5xSAmfo"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=8yPUMtDi1VA"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=8yPUMtDi1VA"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=sYlvr2VOg4E"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=sYlvr2VOg4E"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+! Canal secundario
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=J2NN9_7Atgo"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=J2NN9_7Atgo"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=N8lmRldRGF8"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=N8lmRldRGF8"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=_QO6kMCtC8o"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=_QO6kMCtC8o"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Re16fKKJrxs"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Re16fKKJrxs"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=YABpKEAGMzQ"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=YABpKEAGMzQ"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=B7ReFC3pKOc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=B7ReFC3pKOc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=vXeUKd_9PjY"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=vXeUKd_9PjY"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=GXxg77vLbUM"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=GXxg77vLbUM"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=IUWHiKjDHJ4"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=IUWHiKjDHJ4"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=pbr8lZmy2zw"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=pbr8lZmy2zw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=gvYglkr21Zg"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=gvYglkr21Zg"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=C9J8BZj5JQM"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=C9J8BZj5JQM"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=FJgTKjSPWZw"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=FJgTKjSPWZw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=GoO43lQbaoI"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=GoO43lQbaoI"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Wtt46EyZR24"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Wtt46EyZR24"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=AlvNGYU-G3U"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=AlvNGYU-G3U"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=qaN2tn7wHwA"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=qaN2tn7wHwA"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=V4z__VXG5JY"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=V4z__VXG5JY"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Ocw9WEIFxKQ"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Ocw9WEIFxKQ"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=EnlFRnvQ8LI"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=EnlFRnvQ8LI"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JMtC7vklrBQ"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JMtC7vklrBQ"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ivf2f66NFpA"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ivf2f66NFpA"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=i-Hi_H7Vi9g"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=i-Hi_H7Vi9g"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=mAvqUluXGU0"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=mAvqUluXGU0"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=5wV9XVk-P18"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=5wV9XVk-P18"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=NBKtuR9aeaw"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=NBKtuR9aeaw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Fe0RtJHk4-U"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=Fe0RtJHk4-U"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=jpAz9s7Dzrc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=jpAz9s7Dzrc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=T4cYEk97Z_k"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=T4cYEk97Z_k"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=E-seVmotQwI"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=E-seVmotQwI"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ovmC2GrDAPo"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=ovmC2GrDAPo"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=RCmwJelSVFg"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=RCmwJelSVFg"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=wz4ug3MUHUk"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=wz4ug3MUHUk"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=hOHpCmbu0U4"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=hOHpCmbu0U4"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=YntiPiOvQYs"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=YntiPiOvQYs"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=hIoofh8lPhw"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=hIoofh8lPhw"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=iJyHs2VMfNc"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=iJyHs2VMfNc"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JVfledkD0rA"]) ytd-app > *:style(display:none!important;)
+youtube.com##html:has(link[rel="canonical"][href*="watch?v=JVfledkD0rA"]) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! FIN
