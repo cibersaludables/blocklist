@@ -1,30 +1,29 @@
 [Adblock Plus 2.0]
-! Título: cibersaludables-gemelos
-! Descripción: Blocklist para uBlock Origin destinada a bloquear canales de YouTube,
-!              vídeos individuales, búsquedas por palabras clave y perfiles sociales relacionados.
-! Ámbito: Solo a nivel de navegador (uBlock Origin)
-! Compatibilidad: Firefox (uBlock Origin COMPLETO). Compatibilidad limitada o no soportada en Chrome MV3.
-! NO compatible con DNS / Firewalla / iOS / Android / Smart TV
-!
+! Título: cibersaludables-gemelos (lite)
+! Descripción: Blocklist uBlock Origin con overlay-kill (sin $document y sin :matches-path)
 ! Mantenedor: cibersaludables
 ! Licencia: MIT
-! Versión: 1.1.2
-! Última actualización: 2026-01-12
+! Versión: 1.1.4
+! Última actualización: 2026-01-13
 !
-! ------------------------------------------------------------
-! INFORMACIÓN IMPORTANTE PARA LOS USUARIOS
-! ------------------------------------------------------------
-! - Esta lista está pensada ÚNICAMENTE para uBlock Origin.
-! - NO utiliza strict-block ($document) para evitar el botón "Continuar".
-! - El bloqueo se realiza mediante overlay visual (overlay-kill).
-!
-! ------------------------------------------------------------
-! SECCIÓN 1 — Canales de YouTube (overlay-kill por ruta)
+! Nota: Se evita :matches-path() porque está generando "Invalid filter" en algunas instalaciones.
 ! ------------------------------------------------------------
 
-youtube.com##:matches-path(/^\/@ZonaGemelosYT(\/|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'%3EContenido bloqueado%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+! ============================================================
+! OVERLAY BASE (reutilizable)
+! - Oculta el contenido de ytd-app y deja una pantalla en blanco.
+! - (Opcional) más adelante podemos meter texto con una técnica distinta.
+! ============================================================
 
-youtube.com##:matches-path(/^\/@zonagemelosxtra(\/|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'%3EContenido bloqueado%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+! ------------------------------------------------------------
+! SECCIÓN 1 — Canales (overlay-kill)
+! ------------------------------------------------------------
+
+youtube.com##ytd-app:has(meta[property="og:url"][content*="youtube.com/@ZonaGemelosYT"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="youtube.com/@ZonaGemelosYT"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
+
+youtube.com##ytd-app:has(meta[property="og:url"][content*="youtube.com/@zonagemelosxtra"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="youtube.com/@zonagemelosxtra"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 2 — Bloqueo de vídeos en listados (DOM-based)
@@ -34,25 +33,31 @@ youtube.com##ytd-video-renderer:has(a[href*="/channel/UCyOwWp6c30--i9_elAgef9g"]
 youtube.com##ytd-video-renderer:has(a[href*="/channel/UCMv2xvVhri2zUgiUFUn_8mw"])
 
 ! ------------------------------------------------------------
-! SECCIÓN 3 — Búsquedas en YouTube (overlay-kill)
+! SECCIÓN 3 — Búsquedas (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com##:matches-path(/^\/results\?search_query=casa\+de\+los\+gemelos(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='42' text-anchor='middle' fill='%23111111'%3EBúsqueda bloqueada%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=casa+de+los+gemelos"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=casa+de+los+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##:matches-path(/^\/results\?search_query=gala\+gemelos(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='42' text-anchor='middle' fill='%23111111'%3EBúsqueda bloqueada%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=gala+gemelos"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=gala+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##:matches-path(/^\/results\?search_query=casa\+gemelos(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='42' text-anchor='middle' fill='%23111111'%3EBúsqueda bloqueada%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=casa+gemelos"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="results?search_query=casa+gemelos"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
 ! SECCIÓN 4 — Vídeos individuales (overlay-kill)
 ! ------------------------------------------------------------
 
-youtube.com##:matches-path(/^\/watch\?v=qSK-NQH1cOM(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'%3EVídeo bloqueado%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=qSK-NQH1cOM"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=qSK-NQH1cOM"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##:matches-path(/^\/watch\?v=Am-_eEyR5Dw(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'%3EVídeo bloqueado%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=Am-_eEyR5Dw"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=Am-_eEyR5Dw"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
-youtube.com##:matches-path(/^\/watch\?v=t2wBKKKLWe4(&|$)/) ytd-app:style(position:fixed!important;inset:0!important;z-index:2147483647!important;background-color:#ffffff!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='white'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial' font-size='44' text-anchor='middle' fill='%23111111'%3EVídeo bloqueado%3C/text%3E%3Ctext x='50%25' y='55%25' font-family='Arial' font-size='26' text-anchor='middle' fill='%23555555'%3Epor Cibersaludables%3C/text%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=t2wBKKKLWe4"]) > *:style(display:none!important;)
+youtube.com##ytd-app:has(meta[property="og:url"][content*="watch?v=t2wBKKKLWe4"]):style(position:fixed!important;inset:0!important;z-index:2147483647!important;background:#ffffff!important;)
 
 ! ------------------------------------------------------------
-! FIN DE LA LISTA
+! FIN
 ! ------------------------------------------------------------
